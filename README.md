@@ -1,5 +1,5 @@
 # compssa
-A rigorous comparison of nine feature techniques for near-realtime surgical skill assessment
+A rigorous comparison of nine feature techniques
 - Statistical features
 - PCA
 - BoW
