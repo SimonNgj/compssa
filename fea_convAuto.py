@@ -166,28 +166,28 @@ for skill in list_skill:
             optm = Adam(lr=learning_rate)
 
             model.compile(optimizer=optm, loss='mean_squared_error', metrics=['accuracy'])
-            model.fit(X_train, X_train, batch_size=batch_s, epochs=epochs_s, callbacks = callback_list, class_weight=class_weight, verbose=2, validation_data=(X_test, labels_test))
+            model.fit(X_train, X_train, batch_size=batch_s, epochs=epochs_s, callbacks = callback_list, class_weight=class_weight, verbose=2, validation_data=(X_test, X_test))
 
             model.load_weights(weight_fn)
             prediction = model.predict(X_test);
-            y_pred = np.argmax(prediction, axis=1)
+            #y_pred = np.argmax(prediction, axis=1)
     
-            cr = classification_report(y_test, y_pred)
-            cm = confusion_matrix(y_test, y_pred)
+            #cr = classification_report(y_test, y_pred)
+            #cm = confusion_matrix(y_test, y_pred)
     
-            print("-------------------- Full NN -----------------------")
-            print("Skill: ", skill)
-            print("Trial out:", user)
-            acc = np.sum(y_pred == y_test)/y_pred.shape[0]
-            acc_1.append(acc)
-            print('Accuracy: ' + str(acc))
-            print(cr)
-            print(cm)
-            f = open(str(tim)+'_'+skill+'_'+str(win)+'_'+str(over)+'_report_AutoCNN_fea.txt', 'a+')
-            f.write("-------------------- Full NN -----------------------")
-            f.write('---------' + skill + " Win: " + str(win) + " Shift: " + str(over) + " Trial: " + str(user) + '---------\n\n')
-            f.write('Accuracy: ' + str(acc))
-            f.write('\n\nClassification Report\n\n{}\n\nConfusion Matrix\n\n{}\n\n'.format(cr, cm))
+            #print("-------------------- Full NN -----------------------")
+            #print("Skill: ", skill)
+            #print("Trial out:", user)
+            #acc = np.sum(y_pred == y_test)/y_pred.shape[0]
+            #acc_1.append(acc)
+            #print('Accuracy: ' + str(acc))
+            #print(cr)
+            #print(cm)
+            #f = open(str(tim)+'_'+skill+'_'+str(win)+'_'+str(over)+'_report_AutoCNN_fea.txt', 'a+')
+            #f.write("-------------------- Full NN -----------------------")
+            #f.write('---------' + skill + " Win: " + str(win) + " Shift: " + str(over) + " Trial: " + str(user) + '---------\n\n')
+            #f.write('Accuracy: ' + str(acc))
+            #f.write('\n\nClassification Report\n\n{}\n\nConfusion Matrix\n\n{}\n\n'.format(cr, cm))
             
             ##############################################
             moFea = Model(ip, fea)
