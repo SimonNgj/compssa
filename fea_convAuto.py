@@ -165,7 +165,7 @@ for skill in list_skill:
             callback_list = [model_checkpoint, stop]
             optm = Adam(lr=learning_rate)
 
-            model.compile(optimizer=optm, loss='categorical_crossentropy', metrics=['accuracy'])
+            model.compile(optimizer=optm, loss='mean_squared_error', metrics=['accuracy'])
             model.fit(X_train, X_train, batch_size=batch_s, epochs=epochs_s, callbacks = callback_list, class_weight=class_weight, verbose=2, validation_data=(X_test, labels_test))
 
             model.load_weights(weight_fn)
